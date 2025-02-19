@@ -1,0 +1,31 @@
+services:
+  database:
+    image: postgres:13
+    container_name: database
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - database_data:/var/lib/postgresql/data
+
+  api:
+    build: .
+    container_name: koa_api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+    volumes:
+      - ./src:/app/src
+    environment:
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: postgres
+
+volumes:
+  database_data:
