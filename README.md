@@ -6,8 +6,8 @@ Projeto backend para controle de acesso a rotas.
 ## 🔨 Tarefas
 ✔️ Configurar Nodejs <br>
 ✔️ Configurar Docker <br>
-❌ Configurar Banco de Dados (Postgres)<br>
-❌ Configurar TypeORM <br>
+✔️ Configurar Banco de Dados (Postgres)<br>
+✔️ Configurar TypeORM <br>
 ❌ Configurar integração com AWS Cognito <br>
 ❌ Criar rotas de /auth, /me, /edit-account e /users <br>
 ❌ Criar testes unitários e de integração <br>

@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "lib": ["es5", "es6"],
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "module": "commonjs",
     "esModuleInterop": true,
@@ -17,7 +19,6 @@
         ]
     }
   },
-  "include": [
-      "src/**/*"
-  ]
+  "include": [ "src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

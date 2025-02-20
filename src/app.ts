@@ -1,10 +1,16 @@
 import Koa from 'koa';
 import dotenv from 'dotenv';
+import DataSource from './database/DataSource';
+import "reflect-metadata";
 
 const PORT = process.env.PORT || 3000;
 const app = new Koa();
 
 dotenv.config();
+
+DataSource.initialize()
+    .then(() => console.log('Data Source has been initialized!'))
+    .catch((error) => console.log(error))
 
 app.use(async (ctx, next) => {
   await next();

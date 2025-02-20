@@ -20,6 +20,7 @@ services:
       - database
     volumes:
       - ./src:/app/src
+      - ./.env:/app/.env
     environment:
       DB_HOST: database
       DB_PORT: 5432
