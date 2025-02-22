@@ -1,5 +1,9 @@
 {
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  },
   "compilerOptions": {
+    "skipLibCheck": true,
     "lib": ["es5", "es6"],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -13,12 +17,9 @@
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
-        "*": [
-            "node_modules/*",
-            "src/types/*"
-        ]
+      "@/*": ["./src/*"],
     }
   },
-  "include": [ "src/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }
