@@ -1,7 +1,8 @@
 import Koa from 'koa';
 import dotenv from 'dotenv';
 import DataSource from './database/DataSource';
-import "reflect-metadata";
+import router from '@/routes';
+import bodyParser from 'koa-bodyparser';
 
 const PORT = process.env.PORT || 3000;
 const app = new Koa();
@@ -9,9 +10,16 @@ const app = new Koa();
 dotenv.config();
 
 DataSource.initialize()
-    .then(() => console.log('Data Source has been initialized!'))
-    .catch((error) => console.log(error))
-
+  .then(db => {
+    app.context.db = db;
+    console.log('Data Source has been initialized!');
+  })
+  .catch((err) => {
+    console.error('Error during Data Source initialization:', err);
+  });
+ 
+app.use(bodyParser());
+  
 app.use(async (ctx, next) => {
   await next();
   const rt = ctx.response.get('X-Response-Time');
@@ -33,9 +41,8 @@ app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 });
 
-app.use(async ctx => {  
-  ctx.body = `Server running on port ${PORT}`;
-});
+app.use(router.routes())
+  .use(router.allowedMethods());
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
