@@ -8,7 +8,7 @@ jest.mock('@/services/CognitoService', () => ({
     awsCognitoClientId: 'mock-client-id',
     awsRegion: 'us-east-1'
   }),
-  getUser: jest.fn(), // 👈 Mock do getUser
+  getUser: jest.fn(), 
   signIn: jest.fn(),
   signUp: jest.fn(),
   updateUser: jest.fn(),

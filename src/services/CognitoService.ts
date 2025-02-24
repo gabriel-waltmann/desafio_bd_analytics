@@ -142,7 +142,7 @@ export const signIn = async (props: SignInDTO): Promise<string> => {
         return reject(err);
       }
         
-      return resolve(authResult?.AuthenticationResult.AccessToken);
+      return resolve(authResult?.AuthenticationResult?.AccessToken);
     });
   });
 }

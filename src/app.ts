@@ -5,18 +5,26 @@ import router from '@/routes';
 import bodyParser from 'koa-bodyparser';
 
 const PORT = process.env.PORT || 3000;
+const isTest = process.env.NODE_ENV === 'test';
 const app = new Koa();
 
 dotenv.config();
 
-DataSource.initialize()
-  .then(db => {
-    app.context.db = db;
+const initializeDatabase = async () => {
+  try {
+    await DataSource.initialize();
+    app.context.db = DataSource;
     console.log('Data Source has been initialized!');
-  })
-  .catch((err) => {
+  } catch (err) {
     console.error('Error during Data Source initialization:', err);
-  });
+  }
+};
+
+app.use(async (ctx, next) => {
+  if (!DataSource.isInitialized && !isTest) initializeDatabase();
+  
+  await next();
+});
  
 app.use(bodyParser());
   
