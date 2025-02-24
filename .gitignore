@@ -1,9 +1,18 @@
+# node
 node_modules
+
+# environment variables
 .env
+.env.test
+
+# build
 dist
-.idea/
-.vscode/
-node_modules/
-build/
+build
+
+# ide
+.idea
+.vscode
+
+# temp
 tmp/
 temp/
