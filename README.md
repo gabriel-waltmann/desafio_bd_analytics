@@ -8,11 +8,10 @@ Projeto backend para controle de acesso a rotas.
 ✔️ Configurar Docker <br>
 ✔️ Configurar Banco de Dados (Postgres)<br>
 ✔️ Configurar TypeORM <br>
-❌ Configurar integração com AWS Cognito <br>
-❌ Criar rotas de /auth, /me, /edit-account e /users <br>
-❌ Criar testes unitários e de integração <br>
-❌ Documentar Swagger <br>
-❌ Incluir instruções de inicialização no README.md  <br>
+✔️ Configurar integração com AWS Cognito <br>
+✔️ Criar rotas de /auth, /me, /edit-account e /users <br>
+✔️ Criar testes unitários e de integração <br>
+✔️ Incluir instruções de inicialização no README.md  <br>
 
 ## 🔧 Tecnologias
 ✔️ Nodejs <br>
@@ -23,6 +22,12 @@ Projeto backend para controle de acesso a rotas.
 ✔️ Docker / Docker compose <br>
 
 ## 🚀 Como rodar o projeto
+1. Clone o projeto: git clone git@github.com:gabriel-waltmann/desafio_bd_analytics.git
+2. Acesse no terminal: cd desafio_bd_analytics
+3. Instale os pacotes: npm install 
+4. Rode os containers: docker-compose up -d
+5. Aplique as migrations: npm run typeorm migration:run
+6. Teste as rotas no Postman: https://www.postman.com/martian-robot-359941/workspace/desafio-db-analytics
 
 ## 🧪 Como rodar os testes 
 
