@@ -2,12 +2,21 @@ import { AuthMiddleware } from '../../../src/middleware/AuthMiddleware';
 import { Context } from 'koa';
 import * as CognitoService from '../../../src/services/CognitoService';
 
+const awsCredentialsMock = () => ({
+  awsCognitoUserPoolId: 'mock-pool-id',
+  awsCognitoClientId: 'mock-client-id',
+  awsRegion: 'us-east-1'
+});
+
+const cognitoUserMock = () => ([
+  { Name: 'name', Value: 'John Doe' },
+  { Name: 'email', Value: 'john@example.com' },
+  { Name: 'custom:role', Value: 'user' },
+  { Name: 'custom:isOnboarded', Value: 'false' }
+]);
+
 jest.mock('@/services/CognitoService', () => ({
-  getCredentials: jest.fn().mockReturnValue({
-    awsCognitoUserPoolId: 'mock-pool-id',
-    awsCognitoClientId: 'mock-client-id',
-    awsRegion: 'us-east-1'
-  }),
+  getCredentials: jest.fn().mockReturnValue(() => awsCredentialsMock()),
   getUser: jest.fn(), 
   signIn: jest.fn(),
   signUp: jest.fn(),
@@ -58,12 +67,7 @@ describe('Auth Middleware', () => {
 
   it('should allow authenticated requests', async () => {
     mockContext.header = { authorization: 'Bearer valid-token' };
-    (CognitoService.getUser as jest.Mock).mockResolvedValue([
-      { Name: 'name', Value: 'John Doe' },
-      { Name: 'email', Value: 'john@example.com' },
-      { Name: 'custom:role', Value: 'user' },
-      { Name: 'custom:isOnboarded', Value: 'false' }
-    ]);
+    (CognitoService.getUser as jest.Mock).mockResolvedValue(cognitoUserMock());
   
     const next = jest.fn();
     await AuthMiddleware(mockContext as Context, next);
