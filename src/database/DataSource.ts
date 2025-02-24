@@ -4,7 +4,9 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const { DB_HOST, DB_PORT, DB_USERNAME, DB_PASSWORD, DB_NAME } = process.env;
+const { DB_HOST, DB_PORT, DB_USERNAME, DB_PASSWORD, DB_NAME, NODE_ENV } = process.env;
+
+const isTest = NODE_ENV === 'test';
 
 const config: DataSourceOptions = {
   type: "postgres",
@@ -13,7 +15,8 @@ const config: DataSourceOptions = {
   username: DB_USERNAME ?? "postgres",
   password: DB_PASSWORD ?? "postgres",
   database: DB_NAME ?? "postgres",
-  synchronize: true,
+  synchronize: isTest,
+  dropSchema: isTest,
   logging: false,
   entities: ["src/database/entity/**/*.ts"],
   migrations: ["src/database/migration/**/*.ts"],

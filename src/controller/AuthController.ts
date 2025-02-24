@@ -3,6 +3,7 @@ import { ParameterizedContext } from "koa";
 import { Repository } from "typeorm";
 import * as CognitoService from "@/services/CognitoService";
 import * as UserService from "@/services/UserService";
+import * as AuthUtil from "@/utils/AuthUtil";
 
 interface SignUpOrRegisterDTO {
   name: string;
@@ -104,7 +105,7 @@ export const me = async (ctx: ParameterizedContext<any>): Promise<void> => {
 export const editAccount = async (ctx: ParameterizedContext<any>): Promise<void> => {
   try {
     const { name: newName, role: newRole } = ctx.request.body as EditAccountDTO;
-    const token = ctx.headers.authorization?.split(' ')[1];
+    const token = AuthUtil.getToken(ctx);
   
     const repository: Repository<User> = ctx.db.getRepository(User);
   
