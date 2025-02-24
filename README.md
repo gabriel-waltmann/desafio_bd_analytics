@@ -33,7 +33,7 @@ Projeto backend para controle de acesso a rotas.
 
 ## 💡 Dica:
 No postman, defina uma variável `USER_TOKEN`. <br />
-Ao fazer login com a rota /auth, a váriavel sera automaticamente preenchida e será utilizada nas rotas com restrução de acesso. 
+Ao fazer login com a rota /auth, a váriavel sera automaticamente preenchida e será utilizada nas rotas com restrição de acesso. 
 
 ## 🧪 Como rodar os testes 
 1. Acesse no terminal: cd desafio_bd_analytics
