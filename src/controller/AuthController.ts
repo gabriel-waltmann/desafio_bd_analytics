@@ -55,7 +55,7 @@ export const signInOrRegister = async (ctx: ParameterizedContext<any>): Promise<
 
       if (!userSub) throw new Error("Internal server error");
     
-      const user = UserService.create({
+      const user = await UserService.create({
         params: { name, email, role: 'user', isOnboarded: false },
         repository
       });

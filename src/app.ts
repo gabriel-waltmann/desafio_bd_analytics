@@ -21,8 +21,10 @@ const initializeDatabase = async () => {
 };
 
 app.use(async (ctx, next) => {
-  if (!DataSource.isInitialized && !isTest) initializeDatabase();
-  
+  if (!DataSource.isInitialized && !isTest) {
+    await initializeDatabase();
+  }
+
   await next();
 });
  
