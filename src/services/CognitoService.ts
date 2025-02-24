@@ -188,8 +188,6 @@ export const updateUser = async (props: UpdateUserDTO): Promise<any> => {
         return reject(err);
       }
     
-      console.log(result);
-
       return resolve(result);
     });
   });

@@ -67,5 +67,7 @@ interface UserDeleteDTO {
 export const remove = async (props: UserDeleteDTO): Promise<User> => {
   const { repository } = props;
 
-  return await repository.remove(await repository.findOne({ where: { email: props.params.email } }));
+  const user = await repository.findOne({ where: { email: props.params.email } });
+
+  return await repository.remove(user);
 }
