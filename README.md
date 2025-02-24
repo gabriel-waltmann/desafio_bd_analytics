@@ -24,10 +24,12 @@ Projeto backend para controle de acesso a rotas.
 ## 🚀 Como rodar o projeto
 1. Clone o projeto: git clone git@github.com:gabriel-waltmann/desafio_bd_analytics.git
 2. Acesse no terminal: cd desafio_bd_analytics
-3. Instale os pacotes: npm install 
-4. Rode os containers: docker-compose up -d
-5. Aplique as migrations: npm run typeorm migration:run
-6. Teste as rotas no Postman: https://www.postman.com/martian-robot-359941/workspace/desafio-db-analytics
+3. Remomei o arquivo `.env.exemple` para `.env`
+4. Altere todas as variaveis no arquivo .env com as credenciais de acesso no aws
+5. Instale os pacotes: npm install 
+6. Rode os containers: docker-compose up -d
+7. Aplique as migrations: npm run typeorm migration:run
+8. Teste as rotas no Postman: https://www.postman.com/martian-robot-359941/workspace/desafio-db-analytics
 
 ## 🧪 Como rodar os testes 
 1. Acesse no terminal: cd desafio_bd_analytics
