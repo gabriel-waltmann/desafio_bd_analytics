@@ -30,6 +30,15 @@ Projeto backend para controle de acesso a rotas.
 6. Teste as rotas no Postman: https://www.postman.com/martian-robot-359941/workspace/desafio-db-analytics
 
 ## 🧪 Como rodar os testes 
+1. Acesse no terminal: cd desafio_bd_analytics
+2. Caso tenha feito as instruções acima, desative os containers de dev: docker-compose down
+3. Caso não tenha feito as instruções acima, instale os pacotes: npm install
+4. Rode os containers de teste: docker-compose -f docker-compose.test.yml up -d 
+5. Aplique as migrations: npm run typeorm migration:run
+6. Para rodas os testes, há as seguintes opções:
+- Todos os testes: npm run test
+- Apenas testes unitários: npm run test:unit
+- Apenas teste e2e: npm run test:e2e
 
 ## License - [MIT](./LICENSE)
 [![licence mit](https://img.shields.io/badge/licence-MIT-blue.svg)](./LICENSE)
